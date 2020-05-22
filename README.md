@@ -14,3 +14,5 @@
 #SoBlog登录注册首页：http://www.sosodiduck.xyz:8080/admin/login
 
 #SoBlog文章首页：http://www.sosodiduck.xyz:8080/home
+
+（项目备注:node_modules文件夹为项目的各模板配置文件，对应的版本在package.json中记录）
