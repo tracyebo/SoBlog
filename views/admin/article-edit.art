@@ -1,0 +1,80 @@
+    {{extend './common/layout.art'}}
+    {{block 'main'}}
+    {{include './common/header.art'}}
+    <!-- 主体内容 -->   
+    <div class="content">
+        {{include './common/aside.art'}}
+        <div class="main">
+            <!-- 分类标题 -->
+            <div class="title">
+                <h4 style="display:{{button=='查看文章信息'?'block':'none'}}">{{@article && article._id}}</h4>
+                <p class="tips">{{message}}</p>
+            </div>
+            <!-- /分类标题 -->
+            <!-- enctype 指定表单提交类型: 1)application/x-www-form-urlencoded 2)multipart/form-data(二进制类型) -->
+            <form class="form-container" action="{{link}}" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" class="form-control" placeholder="请输入文章标题" name="title"
+                    value="{{article && article.title}}">
+                </div>
+                <div class="form-group">
+                    {{if !article}}
+                        <label>作者ID</label><input type="text" class="form-control" name="author" readonly 
+                        value="{{@userInfo._id}}">
+                    {{/if}}
+                    {{if article}}
+                        <label>原作者昵称</label><input type="text" class="form-control" name="author" readonly 
+                        value="{{article.author.username}}">
+                    {{/if}}
+                </div>
+                <div class="form-group">
+                    <label>发布时间</label>
+                    <input placeholder="20**/**/**" name="publishDate" type="date" class="form-control" 
+                    value="{{article && dateFormat(article.publishDate,'yyyy-mm-dd')}}">
+                </div>
+                
+                <div class="form-group">
+                   <label for="exampleInputFile">文章封面</label>
+                   {{if button=='发布新文章'}}
+                   <input type="file" name="cover" id="file" >
+                   {{/if}}
+                   <!-- input里加上multiple属性 可多选  -->
+                   <div class="thumbnail-waper">
+                       <img class="img-thumbnail" src="{{article && article.cover}}" id="preview">
+                   </div>
+                </div>
+                <div class="form-group">
+                    <label>内容</label>
+                    <textarea class="form-control" id="editor" name="content">{{article && article.content}}</textarea>
+                </div>
+                {{if button=='发布新文章'}}
+                <div class="buttons">
+                    <input type="submit" class="btn btn-primary" value="发布新文章">
+                </div>
+                {{/if}}
+            </form>
+            
+        </div>
+    </div>
+    {{/block}}
+    <!-- /主体内容 -->
+    {{block 'script'}}
+    <script src="/admin/lib/ckeditor5/ckeditor.js"></script>
+    <script type="text/javascript">
+        // 获取数据
+
+        var file = document.querySelector('#file');
+        var preview = document.querySelector('#preview');
+        file.onchange = function() {
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+
+            reader.onload = function() {
+                console.log(reader.result)
+                preview.src = reader.result;
+            }
+        }
+
+    </script>
+{{/block}}

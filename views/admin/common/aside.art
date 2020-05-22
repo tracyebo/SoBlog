@@ -1,0 +1,22 @@
+<!-- 侧边栏 -->
+        <div class="aside fl">
+            <ul class="menu list-unstyled">
+                <li>
+                    <a class="item {{currentLink=='user'?'active':''}}" href="/admin/user" >
+                        <span class="glyphicon glyphicon-user"></span>
+                        用户管理
+                    </a>
+                </li>
+                <li>
+                    <a class="item {{currentLink=='article-edit'?'active':''}}" href="/admin/article" >
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        文章管理
+                    </a>
+                </li>
+            </ul>
+            <a style="color:#E7E7E9;font-size:20px;position:absolute;left:60px;bottom:15px;text-align:center;" 
+            href="./../../home" >
+                博客网站用户首页
+            </a>
+        </div>
+<!-- 侧边栏 -->   

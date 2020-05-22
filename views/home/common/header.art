@@ -1,0 +1,25 @@
+<!-- 头部框架开始 -->
+<div class="header">
+	<div class="w1100">
+		<!-- 网站logo开始 -->
+		<h1 class="logo fl">
+			<a href={{( userInfo && userInfo.role=='admin')?'./../admin/user': './'}}><img src="images/logo.jpg"></a>
+		</h1>
+		<!-- 网站logo结束 -->
+
+		<!-- 网站导航开始 -->
+		<ul class="navigation fr">
+			<li><a href="./../home">首页</a></li>
+			{{if userInfo}} <li><a href="./../admin/login">{{userInfo && userInfo.username}}</a></li>
+							<li><a href="./../home/article-edit">发布新博客</a></li>
+							<li><a href="./../home/logout">注销</a></li>
+			{{/if}}
+			{{if !userInfo}}<li><a href="./../admin/login">登录</a></li>{{/if}}
+		</ul>
+
+    	</div>
+		<!-- 网站导航结束 -->
+
+	</div>
+</div>
+<!-- 头部框架结束 -->

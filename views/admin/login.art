@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>SoBlog - Content Manager</title>
+    <link rel="stylesheet" href="/admin/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/base.css">
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">SoBlog登录</h4>
+            <div class="login">
+                <form action="/admin/login" method="post" id="loginform">
+                    <div class="form-group">
+                        <label>账号</label>
+                        <input type="email" name="email" class="form-control" placeholder="请输入账号">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" name="password" class="form-control" placeholder="请输入密码">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+                </form>
+                <HR style="border:1 dashed #8AC5F8" width="80%" color=#987cb9 SIZE=1>
+                <a href="/../home/user-new""><button type="submit" class="btn btn-primary btn-lg btn-block">注册</button></a>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+    <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/js/common.js"></script>
+    <script type="text/javascript">
+        //submit
+        $('#loginform').on('submit',function(){
+            //get the input (email and password) :return [{name:' ',value:''}]
+            var result = serializeTOJson($(this));
+            //trim 去除空格
+            if(result.email.trim().length == 0 || result.password.trim().length == 0){
+                alert('请输入账号和密码');
+                return false;
+            }
+            //stop submit
+            // return false;
+        });
+    </script>
+</body>
+
+</html>
