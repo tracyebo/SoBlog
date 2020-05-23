@@ -9,7 +9,7 @@
 #Mongodb数据库：mongodb是集合类型的，每个集合里存储的是对象，mongodb里存储的数据类型类似于json。
 
 
-#通过以上的Nodejs+Express+ejs+Mongodb组合，根据博客需求，开发了SoBlog网站。
+#通过以上的Nodejs+Express+art+Mongodb组合，根据博客需求，开发了SoBlog网站。
 
 #SoBlog登录注册首页：http://www.sosodiduck.xyz:8080/admin/login
 
